@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myContainer {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#myAnimation {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+}
+</style>
+<body>
+
+<p>
+<button onclick="myMove()">Move Diagonal</button> 
+<button onclick="changeColor()">Colour Change</button>
+</p>
+
+<div id ="myContainer">
+<div id ="myAnimation"></div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+function myMove() {
+  var elem = document.getElementById("myAnimation");   
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
+}
+
+function getRandomColour() {
+    var l = '0123456789ABCDEF';
+    var c = '#';
+    for (var i =0; i < 6; i++)
+    {
+        c += l[Math.floor(Math.random() * 16)];
+    }
+    return c;
+}
+
+function changeColor() {
+    $("#myAnimation").css("background-color", getRandomColour());
+}
+</script>
+
+</body>
+</html>

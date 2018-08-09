@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<style>
+.dot{
+    border-radius: 1000px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+}
+</style>
+<body>
+    <div class="dot"></div>
+
+    <script>
+        var ele = document.querySelector('.dot');
+        var trans = [
+            {trans: 'rotate(0deg) translage(80px)'},
+            {trans: 'rotate(360def) trans(80px)'},
+        ]
+        var timing = {
+            duration: 2500,
+            iterations: Infinity,
+            direction: 'alternate',
+            easing: 'ease-in-out',
+        }
+        Animation = ele.animate(trans, timing);
+    </script>
+</body>
+</html>
