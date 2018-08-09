@@ -15,15 +15,15 @@
     <script>
         var ele = document.querySelector('.dot');
         var trans = [
-            {trans: 'rotate(0deg) translage(80px)'},
-            {trans: 'rotate(360def) trans(80px)'},
+            {transform: 'rotate(0deg) translate(80px)'},
+            {transform: 'rotate(360def) translate(80px)'},
         ]
         var timing = {
             duration: 2500,
-            iterations: Infinity,
+            iterations: infinity,
             direction: 'alternate',
             easing: 'ease-in-out',
-        }
+        };
         Animation = ele.animate(trans, timing);
     </script>
 </body>

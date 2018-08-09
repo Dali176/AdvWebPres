@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<canvas id="bounce" width="800px" height="800px"></canvas>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        var can = document.getElementById("bounce");
+        var c = can.getContext("2d");
+
+        var container = {
+            x: 0,
+            y: 0,
+            width: 800,
+            height: 800
+        };
+
+        var circles = [{
+            x: 20,
+            y: 600,
+            r: 20,
+            vx: 9,
+            vy: 15,
+            colour: 115
+        },
+        {
+            x: 700,
+            y: 60,
+            r: 40,
+            vx: 9,
+            vy: 3,
+            colour: 22
+        }];
+
+        function move() {
+            c.fillStyle = "#000000";
+            c.fillRect(container.x, container.y, container.width, container.height);
+
+            for (var i = 0; i < circles.length; i++) {
+                c.fillStyle = 'hsl(' + circles[i].colour++ + ', 100%, 50%)';
+                c.beginPath();
+                c.arc(circles[i].x, circles[i].y, circles[i].r, 0, Math.PI * 2, true);
+                c.fill()
+
+                if (circles[i].x - circles[i].r + circles[i].vx < container.x || circles[i].x + circles[i].r + circles[i].vx > container.x + container.width) {
+                    circles[i].vx = -circles[i].vx;
+                }
+
+                if (circles[i].y + circles[i].r + circles[i].vy > container.y + container.height || circles[i].y - circles[i].r + circles[i].vy < container.y) {
+                    circles[i].vy = -circles[i].vy;
+                }
+
+                circles[i].x += circles[i].vx
+                circles[i].y += circles[i].vy
+            }
+            requestAnimationFrame(move);
+        }
+        requestAnimationFrame(move);
+    </script>
+</body>
+
+</html>
